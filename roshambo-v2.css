@@ -511,6 +511,24 @@ footer a {
 
 /* Extra small devices (phones, 600px and down) */
 
+@media (max-height: 750px) {
+    #title {
+        font-size: 2.5rem;
+        margin-top: 1%;
+    }
+
+    #scoreboard {
+        font-size: 0.85em;
+        padding: 2%;        
+    }
+
+    .choice {
+        padding: 5px 0 0 0;
+    }
+
+}
+
+
 @media (max-width: 600px) {
     #controls {
         flex-direction : column;

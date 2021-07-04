@@ -5,6 +5,7 @@
 const CHOICES = Object.freeze({ ROCK: 0, PAPER: 1, SCISSOR: 2 });
 const GAME_STATES = Object.freeze({ WIN: "Player wins the round!", LOSE: "Computer wins the round!", TIE: "Tie!" });
 let rounds;
+let bestOf;
 
 const scoreboard = document.querySelector("#scoreboard");
 const playerButtons = document.querySelectorAll(".player-button");
@@ -143,7 +144,13 @@ function playRound(e) {
     }
 
     assignScore(roundResult);
-    if (roundsPlayed >= rounds) {
+
+    cpuScore = 3;
+    playerScore = 1;
+
+    let bestOfAttained = ((cpuScore >= bestOf) || (playerScore >= bestOf));
+
+    if (roundsPlayed >= rounds || bestOfAttained) {
         endGame();
     } else {
         endRound();
@@ -170,12 +177,12 @@ function endRound() {
             btn.classList.remove("selected-button", "cpu-selected-button");
         })
         
-        //reset choice
+        //reset choice with playButton (disabled)
         userChoice = null;
-        // remove next Button now and replace with play... does this even work?
         e.target.replaceWith(playButton);
+        playButton.setAttribute("disabled", "");
 
-        dialog.textContent = "";
+        dialog.textContent = "Select an option on the left.";
 
         // toggle the buttons again
         playerButtons.forEach(btn => btn.removeAttribute("disabled"));
@@ -316,6 +323,9 @@ function startGame(e) {
     
     rounds = document.getElementById("num-rounds-input").valueAsNumber ?? 5;
     loadScoreboard();
+
+    // set best of rounds.
+    bestOf = (Math.floor(rounds/2) + 1);
 }
 
 function onLoad() {
