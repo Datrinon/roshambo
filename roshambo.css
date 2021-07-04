@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+:root {
+    --panel-color: rgba(29, 29, 29, 0.781);
+}
+
+/* For sticky footer begin */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+/* For sticky footer end */
+
+/* For background */
+html {
+    background: url(./roshambo-stadium.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    font-family: "Oxygen", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-size: 1.15em;
+    font-weight: 400;
+    text-align: center;
+    color: rgb(255, 244, 230);
+}
+
+#title {
+    font-family: "Fjalla One", sans-serif;
+    font-size: 4.5em;
+    margin: 0;
+    padding: 0;
+    background: -webkit-linear-gradient(#eee, rgb(211, 147, 64));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#main-menu {
+    display: none;
+}
+
+/* Game section */
+
+#scoreboard {
+    border: 1px solid tan;
+    border-radius: 5px;
+    background-color: var(--panel-color);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr 2fr;
+    padding: 5%;
+    margin: 0 15%;
+}
+
+#player-name, #cpu-name {
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+h2, h3 {
+    font-family: "Oxygen", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+    padding: 0;
+    color: tan;
+}
+
+#game-info {
+    grid-column: 1 / 3;
+}
+
+#player-info {
+    grid-row: 2 / 3;
+    border-right: 1px solid tan;
+    align-self: center;
+    position: relative;
+}
+
+#cpu-info {
+    grid-row: 2 / 3;
+    align-self: center;
+    position: relative;
+}
+
+.add-score-active {
+    display: inline;
+    position: absolute;
+    top: 1.5em;
+    opacity: 0;
+    animation-name: riseAndDissipate;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes riseAndDissipate {
+    0% {
+        display: inline;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1.0;
+        color: chartreuse;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        top: -2.5em;
+        opacity: 0;
+    }
+}
+
+#results {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+}
+
+#record-log {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+    line-height: 1;
+    height: 140px;
+    border: 1px solid rgb(126, 108, 85);
+    margin: 0 15%;
+    padding: 1em 1em;
+}
+
+#dialog {
+    font-size: 1.25em;
+    text-shadow: 1px 1px 1px black;
+}
+
+.record-empty {
+    color: gainsboro;
+    font-style: italic;
+}
+
+.last-record-message {
+    font-weight: bolder;
+    text-transform: capitalize;
+    align-self: center;
+}
+
+#replay-button {
+    font: inherit;
+    font-size: inherit;
+    padding: 5px;
+    margin: 15px;
+}
+
+#controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.choice {
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    padding: 15px;
+    width: 20%;
+    transition: border 0.25s, background-color 0.25s;
+    user-select: none;
+    cursor: pointer;
+    font-family: inherit;
+    background-color: var(--panel-color);
+    color: inherit;
+    font-size: inherit;
+}
+
+.choice:hover:enabled {
+    border: 1px solid goldenrod;
+    background-color: rgb(214, 157, 34);
+}
+
+.choice:active:enabled {
+    background-color: rgb(114, 102, 80);
+}
+
+.choice:disabled {
+    background-color: lightgray;
+    color: gray;
+    cursor: default;
+    border: 1px solid gray;
+}
+
+.keyhelp {
+    font-weight: bolder;
+    font-size: 1.15em;
+}
+
+.fas {
+    font-size: 5rem;
+    text-align: center;
+    background: -webkit-radial-gradient(#eee, rgb(255, 227, 193));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+footer p {
+    margin-top: 5%;
+    font-size: 0.85em;
+    font-style: italic;
+    color: inherit;
+    line-height: 0;
+}
+
+footer a {
+    color: cyan;
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media (max-width: 600px) {
+    #controls {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .choice {
+        width: 60%;
+        height: 20%;
+        margin: 5px 0;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    body {
+        margin: 0 10%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media (min-width: 1200px) {}

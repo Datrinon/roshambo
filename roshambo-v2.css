@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
+:root {
+    --panel-color        : rgba(29, 29, 29, 0.781);
+    --border-radius-panel: 5px;
+    --text-shadow-color  : 1px 1px 1px black;
+}
+
+/* For sticky footer begin */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display       : flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
+/* For sticky footer end */
+
+/* Background and site-wide characteristics */
+html {
+    background             : url(./roshambo-stadium.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size   : cover;
+    -o-background-size     : cover;
+    background-size        : cover;
+}
+
+body {
+    font-family: "Oxygen", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-size  : 1.15em;
+    font-weight: 400;
+    text-align : center;
+    color      : rgb(255, 244, 230);
+}
+
+#title {
+    font-family            : "Fjalla One", sans-serif;
+    font-size              : 4.5em;
+    margin                 : 0;
+    margin-top             : 5%;
+    padding                : 0;
+    background             : -webkit-linear-gradient(#eee, rgb(211, 147, 64));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.button {
+    border          : 1px solid rgba(0, 0, 0, 0);
+    border-radius   : var(--border-radius-panel);
+    padding         : 5px;
+    transition      : border 0.25s, background-color 0.25s;
+    user-select     : none;
+    cursor          : pointer;
+    font-family     : inherit;
+    background-color: var(--panel-color);
+    color           : inherit;
+    font-size       : inherit;
+}
+
+#main-menu {
+    font-family: "Fjalla One", sans-serif;
+    /* display : none; */
+    /* border  : 1px solid cyan; */
+    margin     : 5% auto;
+    font-size  : 1.75em;
+    text-shadow: var(--text-shadow-color);
+    animation  : fadein 2s;
+}
+
+@keyframes fadein {
+    0% {
+        opacity  : 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity  : 1;
+        transform: scale(1.0);
+    }
+}
+
+.disable {
+    animation : fadeout 1s !important;
+}
+
+@keyframes fadeout {
+    /* The key is to use from OR 0% first to establish opacity 1. */
+    from {
+        opacity : 1;
+    }
+    to {
+        opacity : 0;
+        visibility: hidden;
+    }
+}
+
+
+.main-menu-button {
+    height    : 3em;
+    width     : 9em;
+    font-style: "Fjalla One", sans-serif;
+}
+
+#main-menu-num-rounds #num-rounds-input {
+    box-sizing      : border-box;
+    display         : inline;
+    width           : 2em;
+    height          : 2em;
+    font-size       : inherit;
+    text-align      : center;
+    font-family     : inherit;
+    background-color: var(--panel-color);
+    color           : inherit;
+    border          : none;
+    border-radius   : var(--border-radius-panel);
+    padding         : 0;
+    margin          : 0;
+    padding-left    : 15px;
+    margin-left     : 15px;
+    transition      : color 0.2s;
+    text-shadow     : var(--text-shadow-color);
+}
+
+.num-rounds-input:focus {
+    color: rgb(211, 147, 64);
+}
+
+#main-menu-num-rounds {
+    font-size: 1.65rem;
+}
+
+
+#main-menu-divider {
+    margin: 0 25%;
+}
+
+#main-menu-misc-section {
+    margin-top: 45px;
+    font-size : 0.7em;
+}
+
+#main-menu-misc-section>button {
+    margin-right: 10px;
+    margin-top  : 5px;
+}
+
+
+/* Game section */
+
+#game {
+    display: none;
+    visibility: hidden;
+    transition: opacity 1s;
+}
+
+.enabled {
+    animation: showGame 1.25s;
+    visibility: initial !important;
+    display: block !important;
+}
+
+@keyframes showGame {
+    0% {
+        transform: scale(0);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+#game-display {
+    position: relative;
+    display              : grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows   : 10% 30% 60%;
+    column-gap           : 10%;
+    padding-bottom: 1em;
+}
+
+#scoreboard {
+    --border: 1px solid cyan;
+}
+
+/* 2n - 2 */
+
+#scoreboard > *:nth-child(n + 2) {
+    border-right: 1px solid gold;
+}
+/* 2, 6, 10 = 4n + 2*/
+/* 40 is the max limit */
+
+
+/* #record-log > *:nth-child() {
+    border-right: var(--border);
+}
+
+#record-log > *:nth-child() {
+    border-left: var(--border);
+}
+
+#record-log > *:nth-child() {
+    border-top: var(--border);
+} */
+
+.name {
+    margin: 0;
+}
+
+.score {
+    margin   : 0;
+    font-size: 3em;
+}
+
+.controls {
+    display        : flex;
+    flex-direction : row;
+    justify-content: space-evenly;
+    margin-top     : 5%;
+    /* border         : 1px solid black; */
+    /* background-color: var(--panel-color); */
+}
+
+.game-button {
+    font-size: 1.5em;
+    width    : 25%;
+}
+
+
+#player-control>button {
+    background-color: rgba(92, 118, 212, 0.548);
+}
+
+#player-control>button:hover {
+    background-color: rgba(152, 174, 255, 0.61);
+}
+
+#player-control>button:focus {
+    background-color: rgba(49, 94, 253, 0.8);
+    border          : 1px solid cyan;
+    box-shadow      : 0px 0px 10px rgb(24, 243, 207);
+}
+
+/* Toggle this class when the user presses ROLL to maintain the selected button */
+.selected-button {
+    background-color: rgba(49, 93, 253, 0.8) !important;
+    border          : 1px solid cyan !important;
+    box-shadow      : 0px 0px 10px rgb(24, 243, 207);
+}
+
+#cpu-control>button {
+    background-color: rgba(202, 59, 59, 0.548);
+    cursor          : default;
+}
+
+#cpu-control>button:focus {
+    border    : 1px solid red;
+    box-shadow: 0px 0px 10px rgb(243, 24, 24);
+}
+
+.cpu-selected-button {
+    background-color: rgba(184, 37, 37, 0.8) !important;
+    border          : 1px solid rgb(255, 0, 0) !important;
+    box-shadow      : 0px 0px 10px rgb(243, 24, 24);
+}
+
+.choice {
+    border          : 1px solid rgba(0, 0, 0, 0);
+    border-radius   : 5px;
+    padding         : 15px;
+    transition      : border 0.25s, background-color 0.25s;
+    user-select     : none;
+    cursor          : pointer;
+    font-family     : inherit;
+    background-color: var(--panel-color);
+    color           : inherit;
+    font-size       : auto;
+    width           : 25%;
+}
+
+.fas {
+    font-size : 3.5rem;
+    text-align: center;
+    color     : rgba(255, 255, 255, 0.623);
+}
+
+
+
+#game-info {}
+
+#player-info {
+    align-self: center;
+    position  : relative;
+}
+
+#cpu-info {
+    grid-row  : 2 / 3;
+    align-self: center;
+    position  : relative;
+}
+
+#scoreboard {
+    border               : 1px solid tan;
+    border-radius        : 5px;
+    background-color     : var(--panel-color);
+    display              : grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows   : 1fr 1fr 2fr;
+    padding              : 5%;
+    margin               : 0 15%;
+}
+
+.point {
+    transition: color 0.3s;
+}
+
+.point-hidden {
+    color:rgba(0, 0, 0, 0) !important;
+}
+
+#player-name,
+#cpu-name {
+    font-weight   : bold;
+    letter-spacing: 4px;
+}
+
+h2,
+h3 {
+    font-family   : "Oxygen", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin        : 0;
+    padding       : 0;
+    color         : tan;
+}
+
+
+
+
+
+.add-score-active {
+    display                  : inline;
+    position                 : absolute;
+    top                      : -1.25em;
+    opacity                  : 1;
+    animation-name           : riseAndDissipate;
+    animation-duration       : 1s;
+    animation-timing-function: ease-out;
+    font-size: 3.5em;
+}
+
+@keyframes riseAndDissipate {
+    0% {
+        display: inline;
+        opacity: 0;
+    }
+
+    10% {
+        color: white;
+    }
+
+    20% {
+        color: rgb(181, 255, 108);
+    }
+
+    35% {
+        color: rgb(104, 255, 91);
+    }
+
+    50% {
+        opacity: 1.0;
+        color  : chartreuse;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        top    : -1.5em;
+        opacity: 0;
+    }
+}
+
+#results {
+    grid-column: 1 / 3;
+    grid-row   : 3 / 4;
+}
+
+/* #record-log {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+    line-height: 1;
+    height: 140px;
+    border: 1px solid rgb(126, 108, 85);
+    margin: 0 15%;
+    padding: 1em 1em;
+} */
+
+#scoreboard {
+    height    : 140px;
+    border    : 1px solid rgb(126, 108, 85);
+    margin    : 0 15% 2% 15%;
+    padding   : 1em 1em 2em 1em;
+    background-color: var(--panel-color);
+}
+
+#scoreboard > h2 {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#scoreboard>p {
+    margin: 0;
+}
+#scoreboard .point {
+    font-size: 1.25em;
+    margin: 0;
+    padding: 0;
+}
+
+#scoreboard .cpu-point {
+    color: crimson;
+}
+
+#scoreboard .player-point {
+    color: cyan;
+}
+
+#scoreboard .tie-point {
+    color: gray;
+}
+
+#scoreboard:nth-child(even) {
+    background-color: red;
+}
+
+#dialog {
+    font-size  : 1.25em;
+    text-shadow: 1px 1px 1px black;
+}
+
+
+.last-record-message {
+    font-weight   : bolder;
+    text-transform: capitalize;
+    align-self    : center;
+}
+
+#replay-button {
+    font     : inherit;
+    font-size: inherit;
+    padding  : 5px;
+    margin   : 15px;
+}
+
+
+.button:hover:enabled {
+    border          : 1px solid goldenrod;
+    background-color: rgb(214, 157, 34);
+}
+
+.button:active:enabled {
+    background-color: rgb(114, 102, 80);
+}
+
+.button:disabled {
+    background-color: lightgray;
+    color           : gray;
+    cursor          : default;
+    border          : 1px solid gray;
+}
+
+.keyhelp {
+    font-weight: bolder;
+    font-size  : 1.15em;
+}
+
+
+/* Footer */
+
+footer p {
+    margin-top : 5%;
+    font-size  : 0.85em;
+    font-style : italic;
+    color      : inherit;
+    line-height: 0;
+}
+
+footer a {
+    color: cyan;
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media (max-width: 600px) {
+    #controls {
+        flex-direction : column;
+        justify-content: space-between;
+        align-items    : center;
+    }
+
+    .fas {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .keydescription {
+        display: none;
+    }   
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    body {
+        margin: 0 10%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media (min-width: 1200px) {}
