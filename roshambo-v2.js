@@ -145,8 +145,9 @@ function playRound(e) {
 
     assignScore(roundResult);
 
-    cpuScore = 3;
-    playerScore = 1;
+    // debug
+    // cpuScore = 3;
+    // playerScore = 1;
 
     let bestOfAttained = ((cpuScore >= bestOf) || (playerScore >= bestOf));
 
