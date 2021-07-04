@@ -225,7 +225,6 @@ function endGame() {
     })
 }
 
-// TODO: FIX THIS and replace recordTextDiv with scoreboard references
 function resetGame() {
 
     // reset scores
@@ -243,7 +242,7 @@ function resetGame() {
     scoreboard.querySelectorAll(".point").forEach((p) => p.classList.add("point-hidden"));
 
     // reset dialog.
-    dialog.textContent = "";
+    dialog.textContent = "Select an option on the left.";
 
     document.querySelector("#replay-button").replaceWith(playButton);
 
@@ -256,6 +255,10 @@ function resetGame() {
     playerButtons.forEach(button => {
         button.removeAttribute("disabled");
     })
+
+    // disable play button
+    playButton.setAttribute("disabled", "");
+
 
 
 }

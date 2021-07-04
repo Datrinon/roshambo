@@ -299,10 +299,6 @@ body {
     color     : rgba(255, 255, 255, 0.623);
 }
 
-
-
-#game-info {}
-
 #player-info {
     align-self: center;
     position  : relative;
@@ -324,6 +320,16 @@ body {
     padding              : 5%;
     margin               : 0 15%;
 }
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
 
 .point {
     transition: color 0.3s;
@@ -526,6 +532,9 @@ footer a {
         padding: 5px 0 0 0;
     }
 
+    #replay-button {
+        margin   : 0;
+    }
 }
 
 
@@ -544,6 +553,8 @@ footer a {
     .keydescription {
         display: none;
     }   
+
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
